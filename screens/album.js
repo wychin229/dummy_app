@@ -2,9 +2,9 @@
  * ScrollView
  */
 import React from 'react';
-import { FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
-
+import { backgroundImg } from './home';
 const logo = {
     uri: 'https://reactnative.dev/img/tiny_logo.png',
     width: 100,
@@ -28,37 +28,57 @@ const imgs = [{
 }];
 const ScrollingImg = ({ navigation }) => {
     return (
-            <SafeAreaView>
-                <FlatList 
-                data={imgs}
-                renderItem=
-                {({item}) => {
-                    return (
-                        <Card>
-                            <Card.Title>{item.title}</Card.Title>
-                            <Card.Divider />
-                            <Card.Image
-                                source={{
-                                    uri: item.uri
-                                }}
-                            />
-                            <Text style={{ marginBottom: 10, marginTop: 10 }}>
-                                {item.details}
-                            </Text>
-                            <Button
-                                buttonStyle={{
-                                    borderRadius: 10,
-                                    marginLeft: 0,
-                                    marginRight: 0,
-                                    marginBottom: 0,
-                                }}
-                                title="VIEW NOW"
-                                onPress={() => navigation.navigate('ViewImg', {uri: item.uri})}
-                            />
-                        </Card>
-                    );
-                }}/>
-            </SafeAreaView>
+        <SafeAreaView>
+            <ImageBackground source={backgroundImg} resizeMode="stretch" style={{ width: '100%', height: '110%' }}>
+                <TouchableOpacity
+                    style={{
+                        borderWidth: 1,
+                        borderColor: 'rgba(0,0,0,0.2)',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 40,
+                        position: 'absolute',
+                        top: 10,
+                        left: 10,
+                        height: 40,
+                        backgroundColor: '#fff',
+                        borderRadius: 100,
+                    }}
+                >
+                    <Icon name='angle-left' type='font-awesome' size={30} color='#01a699' onPress={() => navigation.navigate('Home')}/>
+                </TouchableOpacity>
+                <FlatList
+                    style={{ marginTop: 60 }}
+                    data={imgs}
+                    renderItem=
+                    {({ item }) => {
+                        return (
+                            <Card>
+                                <Card.Title>{item.title}</Card.Title>
+                                <Card.Divider />
+                                <Card.Image
+                                    source={{
+                                        uri: item.uri
+                                    }}
+                                />
+                                <Text style={{ marginBottom: 10, marginTop: 10 }}>
+                                    {item.details}
+                                </Text>
+                                <Button
+                                    buttonStyle={{
+                                        borderRadius: 10,
+                                        marginLeft: 0,
+                                        marginRight: 0,
+                                        marginBottom: 0,
+                                    }}
+                                    title="VIEW NOW"
+                                    onPress={() => navigation.navigate('ViewImg', { uri: item.uri })}
+                                />
+                            </Card>
+                        );
+                    }} />
+            </ImageBackground>
+        </SafeAreaView>
     )
 }
 

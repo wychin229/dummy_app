@@ -48,5 +48,11 @@ export default styles = StyleSheet.create({
         },
         shadowOpacity: 0.46,
         shadowRadius: 11.14,
-    }
+    },
+    linearGradient: {
+        flex: 1,
+        paddingLeft: 15,
+        paddingRight: 15,
+        borderRadius: 5
+      }
 });
