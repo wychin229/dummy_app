@@ -24,10 +24,6 @@ export default styles = StyleSheet.create({
         textShadowOffset: { width: 2.5, height: 5 },
         textShadowRadius: 1,
     },
-    main_font_family: {
-        fontWeight: "normal",
-        fontFamily: "American Typewriter",
-    },
     clickable_button: {
         backgroundColor: ""
     },
@@ -39,7 +35,7 @@ export default styles = StyleSheet.create({
         borderRadius: 150 / 2,
         overflow: "hidden",
         alignSelf: 'center',
-    }, 
+    },
     img_shadow: {
         shadowColor: "#000",
         shadowOffset: {
@@ -49,10 +45,24 @@ export default styles = StyleSheet.create({
         shadowOpacity: 0.46,
         shadowRadius: 11.14,
     },
-    linearGradient: {
+    linear_gradient: {
         flex: 1,
         paddingLeft: 15,
         paddingRight: 15,
         borderRadius: 5
-      }
+    },
+    home_detail: {
+        fontFamily: "American Typewriter",
+        marginTop: 5,
+        marginLeft: 5
+    },
+    button_shadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 7,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 3.14,
+    }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, TouchableOpacity } from 'react-native';
+import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { backgroundImg } from './home';
@@ -24,10 +24,13 @@ export default ViewImg = ({ navigation, route }) => {
                         borderRadius: 100,
                     }}
                 >
-                    <Icon name='angle-left' type='font-awesome' size={30} color='#01a699' onPress={() => navigation.navigate('Home')} />
+                    <Icon name='angle-left' type='font-awesome' size={30} color='#01a699' onPress={() => navigation.navigate('Album')} />
                 </TouchableOpacity>
-                <Image style={{ width: "100%", height: "100%", resizeMode: 'contain' }} source={{ uri: uri }} />
+                <View style={{ marginTop: 60 }}>
+                    <Image style={{ width: "100%", height: "80%", resizeMode: 'contain' }} source={{ uri: uri }} />
+                </View>
             </ImageBackground>
         </SafeAreaView>
     )
 }
+

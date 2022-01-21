@@ -2,9 +2,13 @@
  * ScrollView
  */
 import React from 'react';
-import { FlatList, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { FlatList, ImageBackground, SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { backgroundImg } from './home';
+import LinearGradient from 'react-native-linear-gradient';
+import styles from '../style';
+
+
 const logo = {
     uri: 'https://reactnative.dev/img/tiny_logo.png',
     width: 100,
@@ -45,7 +49,7 @@ const ScrollingImg = ({ navigation }) => {
                         borderRadius: 100,
                     }}
                 >
-                    <Icon name='angle-left' type='font-awesome' size={30} color='#01a699' onPress={() => navigation.navigate('Home')}/>
+                    <Icon name='angle-left' type='font-awesome' size={30} color='#01a699' onPress={() => navigation.navigate('Home')} />
                 </TouchableOpacity>
                 <FlatList
                     style={{ marginTop: 60 }}
@@ -53,27 +57,34 @@ const ScrollingImg = ({ navigation }) => {
                     renderItem=
                     {({ item }) => {
                         return (
-                            <Card>
-                                <Card.Title>{item.title}</Card.Title>
-                                <Card.Divider />
+                            <Card 
+                            borderRadius={15} >
                                 <Card.Image
+                                borderRadius={15}
                                     source={{
                                         uri: item.uri
                                     }}
                                 />
-                                <Text style={{ marginBottom: 10, marginTop: 10 }}>
-                                    {item.details}
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 15 }}>
+                                <Text style={{ marginBottom: 10, marginTop: 10, alignSelf: 'center', fontFamily: 'American Typewriter' }}>
+                                    {item.title}
                                 </Text>
-                                <Button
-                                    buttonStyle={{
-                                        borderRadius: 10,
-                                        marginLeft: 0,
-                                        marginRight: 0,
-                                        marginBottom: 0,
-                                    }}
-                                    title="VIEW NOW"
-                                    onPress={() => navigation.navigate('ViewImg', { uri: item.uri })}
-                                />
+                                    <TouchableOpacity
+                                    style={styles.button_shadow}
+                                        onPress={() => navigation.navigate('ViewImg', { uri: item.uri })}>
+                                        <LinearGradient
+                                            colors={['#fcbdd1', '#b3fce8']}
+                                            style={{ borderRadius: 30, width: 45, alignSelf: 'flex-end' }} >
+                                            <View
+                                                style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
+                                                <Icon
+                                                    name="angle-right"
+                                                    type="font-awesome"
+                                                    color='white' />
+                                            </View>
+                                        </LinearGradient>
+                                    </TouchableOpacity>
+                                </View>
                             </Card>
                         );
                     }} />
@@ -81,22 +92,5 @@ const ScrollingImg = ({ navigation }) => {
         </SafeAreaView>
     )
 }
-
-const styles = StyleSheet.create(
-    {
-        row_img: {
-            flex: 2,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center'
-        },
-        one_img: {
-            flexDirection: 'column',
-            alignItems: 'center',
-            top: 50,
-            bottom: 50
-        }
-    }
-)
 
 export default ScrollingImg;

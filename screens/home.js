@@ -11,30 +11,67 @@ export default HelloWorld = ({ navigation, route }) => {
     return (
         <SafeAreaView
             style={{ flex: 1 }}>
-            <ImageBackground source={backgroundImg} resizeMode="stretch" style={{ width: '100%', height: '110%' }}>
-                <Card borderRadius={15} height="70%" marginTop={100}>
-                    <View style={styles.img_shadow}>
-                        <Image style={styles.round_img} source={profileImg} />
+            <ImageBackground
+                source={backgroundImg}
+                resizeMode="stretch"
+                style={{ width: '100%', height: '110%' }}>
+                <Card
+                    borderRadius={15}
+                    height="70%"
+                    marginTop={100}>
+                    <View
+                        style={styles.img_shadow}>
+                        <Image
+                            style={styles.round_img}
+                            source={profileImg} />
                     </View>
-                    <Text style={styles.main_font_family, { alignSelf: 'center', fontSize: 15 }}>Welcome</Text>
-                    <Card.Title style={styles.landing_text}>{route.params.user}</Card.Title>
-                    <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 15 }}>
-                        <Icon name="birthday-cake" type="font-awesome" />
-                        <Text style={styles.main_font_family, { marginTop: 5, marginLeft: 5 }}>Age 2</Text>
+                    <Text
+                        style={{ alignSelf: 'center', fontSize: 15, fontFamily: 'American Typewriter' }}>
+                        Welcome</Text>
+                    <Card.Title
+                        style={styles.landing_text}>
+                        {route.params.user}</Card.Title>
+                    <View
+                        style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 15 }}>
+                        <Icon
+                            name="birthday-cake"
+                            type="font-awesome" />
+                        <Text
+                            style={styles.home_detail}>
+                            Age 2</Text>
 
-                        <Icon name="paw" type="font-awesome" style={{ marginLeft: 15 }} />
-                        <Text style={styles.main_font_family, { marginTop: 5, marginLeft: 5 }}>European Shorthair</Text>
+                        <Icon
+                            name="paw"
+                            type="font-awesome"
+                            style={{ marginLeft: 15 }} />
+                        <Text
+                            style={styles.home_detail}>
+                            European Shorthair</Text>
 
-                        <Icon name="mars" type="font-awesome" color="blue" style={{ marginLeft: 15 }} />
+                        <Icon
+                            name="mars"
+                            type="font-awesome"
+                            color="blue"
+                            style={{ marginLeft: 15 }} />
                     </View>
 
                     <Card.Divider></Card.Divider>
                     <View>
-                        <TouchableOpacity onPress={() => navigation.navigate('Album')}>
-                            <LinearGradient colors={['#fcbdd1', '#b3fce8']} style={{ borderRadius: 30, width: 100, alignSelf: 'center' }} >
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
-                                    <Icon name="picture-o" type="font-awesome" color='white' />
-                                    <Text style={styles.main_font_family, { marginTop: 5, marginLeft: 5, color: 'white' }}>Album</Text>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('Album')}
+                            style={styles.button_shadow}>
+                            <LinearGradient
+                                colors={['#fcbdd1', '#b3fce8']}
+                                style={{ borderRadius: 30, width: 100, alignSelf: 'center' }} >
+                                <View
+                                    style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
+                                    <Icon
+                                        name="picture-o"
+                                        type="font-awesome"
+                                        color='white' />
+                                    <Text
+                                        style={{ marginTop: 5, marginLeft: 5, color: 'white' , fontFamily: "American Typewriter"}}>
+                                        Album</Text>
                                 </View>
                             </LinearGradient>
                         </TouchableOpacity>
