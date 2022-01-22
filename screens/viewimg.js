@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { backgroundImg } from './home';
+import { backgroundImg } from './Home';
 
 export default ViewImg = ({ navigation, route }) => {
     const { uri } = route.params;

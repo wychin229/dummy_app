@@ -1,13 +1,15 @@
 /**
  * ScrollView
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, ImageBackground, SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Card, Button, Icon } from 'react-native-elements';
-import { backgroundImg } from './home';
+import { Card, Icon } from 'react-native-elements';
+import { backgroundImg } from './Home';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from '../style';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { loadImg, loveIt, getPressed } from '../redux/actions';
 
 const logo = {
     uri: 'https://reactnative.dev/img/tiny_logo.png',
@@ -15,25 +17,28 @@ const logo = {
     height: 100
 };
 
-const imgs = [{
-    uri: "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&w=1000&q=80",
-    title: "Small Timmy",
-    details: "Some text here"
-},
-{
-    uri: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-cat-wearing-sunglasses-while-sitting-royalty-free-image-1571755145.jpg",
-    title: "Timmy's friend - Garry",
-    details: "Some text here"
-},
-{
-    uri: "https://cdn.shopify.com/s/files/1/0284/2391/3547/articles/photo-1570579380989-4ad216439577_1024x1024.jpg?v=1596407005",
-    title: "Timmy's Paw",
-    details: "Some text here"
-}];
-const ScrollingImg = ({ navigation }) => {
+const Album = ({ navigation }) => {
+    const { movies, favorites, pictures } = useSelector(state => state.moviesReducer);
+    console.log(pictures);
+    const dispatch = useDispatch();
+    const fetchImgs = () => dispatch(loadImg());
+    useEffect(() => {
+        fetchImgs();
+    }, []);
+    const addLoveNum = img => dispatch(loveIt(img));
+    const handleAdd = img => {
+        addLoveNum(img);
+        console.log("P")
+    };
+    const pressed = img => {
+        if (pictures.filter(item => item.id === img.id).pressed === true) {
+          return true;
+        }
+        return false;
+      };
     return (
-        <SafeAreaView>
-            <ImageBackground source={backgroundImg} resizeMode="stretch" style={{ width: '100%', height: '110%' }}>
+        <ImageBackground source={backgroundImg} resizeMode="stretch" style={{ width: '100%', height: '100%' }}>
+            <SafeAreaView marginTop={50}>
                 <TouchableOpacity
                     style={{
                         borderWidth: 1,
@@ -53,44 +58,65 @@ const ScrollingImg = ({ navigation }) => {
                 </TouchableOpacity>
                 <FlatList
                     style={{ marginTop: 60 }}
-                    data={imgs}
+                    data={pictures}
                     renderItem=
                     {({ item }) => {
                         return (
-                            <Card 
-                            borderRadius={15} >
+                            <Card
+                                borderRadius={15} >
                                 <Card.Image
-                                borderRadius={15}
+                                    borderRadius={15}
                                     source={{
                                         uri: item.uri
                                     }}
                                 />
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 15 }}>
-                                <Text style={{ marginBottom: 10, marginTop: 10, alignSelf: 'center', fontFamily: 'American Typewriter' }}>
-                                    {item.title}
-                                </Text>
-                                    <TouchableOpacity
-                                    style={styles.button_shadow}
-                                        onPress={() => navigation.navigate('ViewImg', { uri: item.uri })}>
-                                        <LinearGradient
-                                            colors={['#fcbdd1', '#b3fce8']}
-                                            style={{ borderRadius: 30, width: 45, alignSelf: 'flex-end' }} >
-                                            <View
-                                                style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
-                                                <Icon
-                                                    name="angle-right"
-                                                    type="font-awesome"
-                                                    color='white' />
-                                            </View>
-                                        </LinearGradient>
-                                    </TouchableOpacity>
+                                    <Text style={{ marginBottom: 10, marginTop: 10, alignSelf: 'center', fontFamily: 'American Typewriter' }}>
+                                        {item.title}
+                                    </Text>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Text style={{ marginRight: 10, marginBottom: 10, marginTop: 10, alignSelf: 'center', fontFamily: 'American Typewriter' }}>{item.love}</Text>
+                                        <TouchableOpacity
+                                            style={[styles.button_shadow, { marginRight: 10 }]}
+                                            disabled={item.pressed}
+                                            activeOpacity={0.8}
+                                            onPress={() => handleAdd(item)}>
+                                            <LinearGradient
+                                                colors={['#fcbdd1', '#b3fce8']}
+                                                style={{ borderRadius: 30, width: 45, alignSelf: 'flex-end' }} >
+                                                <View
+                                                    style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
+                                                    <Icon
+                                                        name={pressed(item) ? 'heart-o' : 'heart'}
+                                                        type="font-awesome"
+                                                        color={pressed(item) ? 'white' : 'red'} />
+                                                </View>
+                                            </LinearGradient>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity
+                                            style={styles.button_shadow}
+                                            onPress={() => navigation.navigate('ViewImg', { uri: item.uri })}>
+                                            <LinearGradient
+                                                colors={['#fcbdd1', '#b3fce8']}
+                                                style={{ borderRadius: 30, width: 45, alignSelf: 'flex-end' }} >
+                                                <View
+                                                    style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
+                                                    <Icon
+                                                        name="angle-right"
+                                                        type="font-awesome"
+                                                        color='white' />
+                                                </View>
+                                            </LinearGradient>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </Card>
                         );
                     }} />
-            </ImageBackground>
-        </SafeAreaView>
+            </SafeAreaView>
+        </ImageBackground>
     )
 }
 
-export default ScrollingImg;
+
+export default Album;

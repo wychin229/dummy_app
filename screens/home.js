@@ -6,15 +6,15 @@ import ClickButton from '../components/clickableButton';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const backgroundImg = { uri: "https://wallpaperaccess.com/full/729333.jpg" };
-export default HelloWorld = ({ navigation, route }) => {
+export default Home = ({ navigation, route }) => {
     const profileImg = { uri: "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&w=1000&q=80" };
     return (
-        <SafeAreaView
-            style={{ flex: 1 }}>
-            <ImageBackground
-                source={backgroundImg}
-                resizeMode="stretch"
-                style={{ width: '100%', height: '110%' }}>
+        <ImageBackground
+            source={backgroundImg}
+            resizeMode="stretch"
+            style={{ width: '100%', height: '100%' }}>
+            <SafeAreaView
+                style={{ flex: 1 }}>
                 <Card
                     borderRadius={15}
                     height="70%"
@@ -70,14 +70,14 @@ export default HelloWorld = ({ navigation, route }) => {
                                         type="font-awesome"
                                         color='white' />
                                     <Text
-                                        style={{ marginTop: 5, marginLeft: 5, color: 'white' , fontFamily: "American Typewriter"}}>
+                                        style={{ marginTop: 5, marginLeft: 5, color: 'white', fontFamily: "American Typewriter" }}>
                                         Album</Text>
                                 </View>
                             </LinearGradient>
                         </TouchableOpacity>
                     </View>
                 </Card>
-            </ImageBackground>
-        </SafeAreaView>
+            </SafeAreaView>
+        </ImageBackground>
     );
 };
