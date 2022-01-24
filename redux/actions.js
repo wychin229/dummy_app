@@ -6,6 +6,7 @@ export const ADD_FAVORITE_ITEM = 'ADD_FAVORITE_ITEM';
 export const REMOVE_FAVORITE_ITEM = 'REMOVE_FAVORITE_ITEM';
 export const LOAD_IMG = 'LOAD_IMG';
 export const ADD_LOVE = 'ADD_LOVE';
+export const UNLOVE = 'UNLOVE';
 
 const API_URL = 'https://api.themoviedb.org/3/movie/popular';
 const API_KEY = '0327c167ced93bc7622290c2fff710f9';
@@ -75,5 +76,11 @@ export const loveIt = item => dispatch => {
   dispatch({
     type: ADD_LOVE,
     payload: {id: item.id, num: item.love+1} // imgs.id
-  })
-}
+  });
+};
+export const unlove = item => dispatch => {
+  dispatch({
+    type: UNLOVE,
+    payload: {id: item.id, num: item.love-1}
+  });
+};

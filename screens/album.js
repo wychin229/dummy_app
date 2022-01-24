@@ -9,7 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles from '../style';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { loadImg, loveIt, getPressed } from '../redux/actions';
+import { loadImg, loveIt, unlove } from '../redux/actions';
 
 const logo = {
     uri: 'https://reactnative.dev/img/tiny_logo.png',
@@ -26,16 +26,22 @@ const Album = ({ navigation }) => {
         fetchImgs();
     }, []);
     const addLoveNum = img => dispatch(loveIt(img));
-    const handleAdd = img => {
-        addLoveNum(img);
+    const undoLove = img => dispatch(unlove(img));
+    const handleLove = img => {
+        if (img.pressed === true) {
+            undoLove(img);
+        }
+        else {
+            addLoveNum(img);
+        }
         console.log("P")
     };
-    const pressed = img => {
-        if (pictures.filter(item => item.id === img.id).pressed === true) {
-          return true;
-        }
-        return false;
-      };
+    // const pressed = img => {
+    //     if (pictures.filter(item => item.id === img.id).pressed === true) {
+    //       return true;
+    //     }
+    //     return false;
+    //   };
     return (
         <ImageBackground source={backgroundImg} resizeMode="stretch" style={{ width: '100%', height: '100%' }}>
             <SafeAreaView marginTop={50}>
@@ -78,18 +84,17 @@ const Album = ({ navigation }) => {
                                         <Text style={{ marginRight: 10, marginBottom: 10, marginTop: 10, alignSelf: 'center', fontFamily: 'American Typewriter' }}>{item.love}</Text>
                                         <TouchableOpacity
                                             style={[styles.button_shadow, { marginRight: 10 }]}
-                                            disabled={item.pressed}
                                             activeOpacity={0.8}
-                                            onPress={() => handleAdd(item)}>
+                                            onPress={() => handleLove(item)}>
                                             <LinearGradient
                                                 colors={['#fcbdd1', '#b3fce8']}
                                                 style={{ borderRadius: 30, width: 45, alignSelf: 'flex-end' }} >
                                                 <View
                                                     style={{ flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
                                                     <Icon
-                                                        name={pressed(item) ? 'heart-o' : 'heart'}
+                                                        name={item.pressed ? 'heart' : 'heart-o'}
                                                         type="font-awesome"
-                                                        color={pressed(item) ? 'white' : 'red'} />
+                                                        color={item.pressed ? 'red' : 'white'} />
                                                 </View>
                                             </LinearGradient>
                                         </TouchableOpacity>

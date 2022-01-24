@@ -1,4 +1,4 @@
-import { GET_MOVIES, ADD_FAVORITE_ITEM, REMOVE_FAVORITE_ITEM, LOAD_IMG, ADD_LOVE } from "./actions";
+import { GET_MOVIES, ADD_FAVORITE_ITEM, REMOVE_FAVORITE_ITEM, LOAD_IMG, ADD_LOVE, UNLOVE } from "./actions";
 const initialState = {
     movies: [],
     favorites: [],
@@ -27,6 +27,14 @@ function moviesReducer(state = initialState, action) {
                 ...state,
                 pictures: state.pictures.map(
                     (content, i) => i === action.payload.id ? { ...content, love: action.payload.num, pressed: true }
+                        : content
+                )
+            };
+        case UNLOVE:
+            return {
+                ...state,
+                pictures: state.pictures.map(
+                    (content, i) => i === action.payload.id ? { ...content, love: action.payload.num, pressed: false }
                         : content
                 )
             };
