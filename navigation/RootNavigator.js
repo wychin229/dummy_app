@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 //import Icon from 'react-native-vector-icons/MaterialIcons'
 // import screens
-import Album from '../screens/Album';
+import Album from '../screens/album';
 import Home from '../screens/Home';
 import Movies from '../screens/Movie';
 import Favorites from '../screens/Favorites';
