@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
-/* eslint-disable prettier/prettier */
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { backgroundImg } from './Home';
 import React, { useEffect } from 'react';
@@ -8,14 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { getMovies, addFavorite, removeFavorite } from '../redux/actions';
 
+
 const Movies = () => {
-  const { movies, favorites, pictures } = useSelector(state => state.moviesReducer);
+  const { movies, favorites } = useSelector(state => state.moviesReducer);
   const dispatch = useDispatch();
   const fetchMovies = () => dispatch(getMovies());
   useEffect(() => {
     fetchMovies();
-  }, []); // https://onebite.dev/call-method-only-once-in-useeffect-react/
-  console.log("Movies",movies);
+  }, []);
   const addToFavorites = movie => dispatch(addFavorite(movie));
   const removeFromFavorites = movie => dispatch(removeFavorite(movie));
   const handleAddFavorite = movie => {

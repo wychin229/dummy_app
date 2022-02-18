@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /**
  * Props, Components, State (Basics)
  */
@@ -8,8 +7,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 
+import Album from './screens/album';
+import HelloWorld from './screens/Home';
 import ViewImg from './screens/ViewImg';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import RootNavigator from './navigation/RootNavigator';
 
 Icon.loadFont();
