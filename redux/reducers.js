@@ -5,16 +5,14 @@ import {
   ADD_LOVE,
   UNLOVE,
   GET_MOVIES_SUCCESS,
+  UPDATE_POINT,
 } from './actions';
-const initialState = {
-  movies: [],
-  favorites: [],
-  pictures: [],
-};
-function moviesReducer(state = initialState, action) {
+import {INITIAL_STATES} from '../redux/initialStates';
+
+function moviesReducer(state = INITIAL_STATES, action) {
   switch (action.type) {
     case GET_MOVIES_SUCCESS:
-      console.log('reducer hit with payload: ', action.payload);
+      console.error('reducer hit with payload: ', action.payload);
       return {...state, movies: action.payload};
     case ADD_FAVORITE_ITEM:
       return {...state, favorites: [...state.favorites, action.payload]};
@@ -47,6 +45,11 @@ function moviesReducer(state = initialState, action) {
             ? {...content, love: action.payload.num, pressed: false}
             : content,
         ),
+      };
+    case UPDATE_POINT:
+      return {
+        ...state,
+        point: action.payload,
       };
     default:
       return state;
