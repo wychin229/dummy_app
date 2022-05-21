@@ -9,7 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 
-import ViewImg from './screens/ViewImg';
+import ViewImg from './screens/viewimg';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RootNavigator from './navigation/RootNavigator';
 

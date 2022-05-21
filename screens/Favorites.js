@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {ImageBackground, StyleSheet} from 'react-native';
-import {backgroundImg} from './Home';
+import {backgroundImg} from './home';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Text, View, FlatList, TouchableOpacity, Image} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';

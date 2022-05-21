@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Card, Icon} from 'react-native-elements';
-import {source} from './Home';
+import {source} from './home';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from '../style';
 
@@ -133,9 +133,10 @@ const Album = ({navigation}) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={styles.button_shadow}
-                      onPress={() =>
-                        navigation.navigate('ViewImg', {uri: item.uri})
-                      }>
+                      // onPress={() =>
+                      //   // navigation.navigate('ViewImg', {uri: item.uri})
+                      // }
+                      >
                       <LinearGradient
                         colors={['#fcbdd1', '#b3fce8']}
                         style={{

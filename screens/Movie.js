@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { source } from './Home';
+import { source } from './home';
 import React from 'react';
 import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import MovieList from './MovieList';

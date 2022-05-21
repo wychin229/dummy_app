@@ -5,13 +5,13 @@ import React from 'react';
 import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { backgroundImg } from './Home';
+import { source } from './home';
 
 export default ViewImg = ({ navigation, route }) => {
     const { uri } = route.params;
     return (
         <SafeAreaView>
-            <ImageBackground source={backgroundImg} resizeMode="stretch" style={{ width: '100%', height: '110%' }}>
+            <ImageBackground source={source.backgroundImg} resizeMode="stretch" style={{ width: '100%', height: '110%' }}>
                 <TouchableOpacity
                     style={{
                         borderWidth: 1,

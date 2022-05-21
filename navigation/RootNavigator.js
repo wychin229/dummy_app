@@ -1,11 +1,11 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 //import Icon from 'react-native-vector-icons/MaterialIcons'
 // import screens
-import Album from '../screens/Album';
-import Home from '../screens/Home';
+import Album from '../screens/album';
+import Home from '../screens/home';
 import Movies from '../screens/Movie';
 import Favorites from '../screens/Favorites';
 import Test from '../screens/Test';
@@ -36,17 +36,17 @@ const RootNavigator = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="home" color="#fbc8c0" size={size} />
           ),
         }}
-        initialParams={{user: user}}
+        initialParams={{ user: user }}
       />
       <Tab.Screen
         name="Album"
         component={Album}
         options={{
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="photo-library" color="#f0c4dd" size={size} />
           ),
         }}
@@ -55,7 +55,7 @@ const RootNavigator = () => {
         name="Movies"
         component={Movies}
         options={{
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="movie-filter" color="#c9fceb" size={size} />
           ),
         }}
@@ -64,7 +64,7 @@ const RootNavigator = () => {
         name="Favorites"
         component={Favorites}
         options={{
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="favorite" color="#d7e2f8" size={size} />
           ),
         }}
@@ -73,7 +73,7 @@ const RootNavigator = () => {
         name="Test"
         component={Test}
         options={{
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="airline-seat-flat" color="black" size={size} />
           ),
         }}
