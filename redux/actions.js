@@ -10,6 +10,7 @@ export const REMOVE_FAVORITE_ITEM = 'REMOVE_FAVORITE_ITEM';
 export const LOAD_IMG = 'LOAD_IMG';
 export const ADD_LOVE = 'ADD_LOVE';
 export const UNLOVE = 'UNLOVE';
+export const UPDATE_POINT = 'UPDATE_POINT';
 
 export const getMovies = () => {
   return {
@@ -55,5 +56,11 @@ export const unlove = item => {
   return {
     type: UNLOVE,
     payload: { id: item.id, num: item.love - 1 },
+  };
+};
+export const updatePoint = point => {
+  return {
+    type: UPDATE_POINT,
+    payload: point,
   };
 };

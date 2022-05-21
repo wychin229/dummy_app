@@ -9,6 +9,12 @@ const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
   moviesReducer,
 });
-export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const middlewares = [thunk,sagaMiddleware];
+// add in redux debugger for flipper
+if (__DEV__) {
+  const createDebugger = require('redux-flipper').default;
+  middlewares.push(createDebugger());
+}
+export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
 sagaMiddleware.run(rootSaga);

@@ -1,3 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { Image, ImageBackground, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';

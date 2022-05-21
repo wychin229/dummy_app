@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 /**
  * Props, Components, State (Basics)
@@ -15,11 +16,7 @@ import RootNavigator from './navigation/RootNavigator';
 Icon.loadFont();
 const Stack = createNativeStackNavigator();
 
-//export default MyApp = () => {
-//  return <RootNavigator />;
-//};
-
-export default MyApp = () => {
+export default App = () => {
   return (
     <Provider store={store} >
       <NavigationContainer>
@@ -35,5 +32,5 @@ export default MyApp = () => {
         </Stack.Navigator>
       </NavigationContainer>
     </ Provider>
-  )
+  );
 };

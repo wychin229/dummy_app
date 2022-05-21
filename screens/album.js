@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 /**
@@ -13,7 +14,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Card, Icon} from 'react-native-elements';
-import {backgroundImg} from './Home';
+import {source} from './Home';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from '../style';
 
@@ -24,7 +25,6 @@ const Album = ({navigation}) => {
   const {pictures} = useSelector(
     state => state.moviesReducer,
   );
-  console.log(pictures);
   const dispatch = useDispatch();
   const fetchImgs = () => dispatch(loadImg());
   useEffect(() => {
@@ -38,17 +38,11 @@ const Album = ({navigation}) => {
     } else {
       addLoveNum(img);
     }
-    console.log('P');
   };
-  // const pressed = img => {
-  //     if (pictures.filter(item => item.id === img.id).pressed === true) {
-  //       return true;
-  //     }
-  //     return false;
-  //   };
+
   return (
     <ImageBackground
-      source={backgroundImg}
+      source={source.backgroundImg}
       resizeMode="stretch"
       style={{width: '100%', height: '100%'}}>
       <SafeAreaView marginTop={50}>
